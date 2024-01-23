@@ -1,0 +1,50 @@
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-4 mb-4" *ngFor="let person of persons">
+      <div class="card person-card">
+        <div
+          class="card-header text-white text-center"
+          [ngClass]="getCardHeaderClass(person.gender)"
+        >
+          <img
+            [src]="
+              person.gender === 'man'
+                ? 'https://cdn1.vectorstock.com/i/1000x1000/61/50/avatar-business-man-graphic-vector-9646150.jpg'
+                : 'https://img.freepik.com/premium-vector/businesswoman-female-elegant-avatar_24877-18073.jpg'
+            "
+            class="card-avatar"
+            alt="{{ person.fullName }} avatar"
+          />
+          <h5 class="card-title mt-2">
+            {{ person.fullName }}
+          </h5>
+          <p class="card-subtitle mb-2">{{ person.email }}</p>
+        </div>
+        <div class="card-body text-center">
+          <p class="card-text">
+            <strong>Phone:</strong> {{ person.phoneNumber }}<br />
+            <strong>Address:</strong> {{ person.address }}<br />
+            <strong>Role:</strong> {{ person.role }}<br />
+            <strong>Description:</strong> {{ person.description }}
+          </p>
+        </div>
+        <div class="card-footer">
+          <button
+            type="button"
+            class="btn btn-danger"
+            (click)="deletePerson(person.id)"
+          >
+            Supprimer
+          </button>
+          <button
+            type="button"
+            class="btn btn-danger"
+            (click)="editPerson(person.id)"
+          >
+            Modifier
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

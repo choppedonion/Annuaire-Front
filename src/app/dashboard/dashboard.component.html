@@ -1,0 +1,20 @@
+<div class="container">
+  <h1 class="title">Annuaire</h1>
+
+  <button
+    type="button"
+    class="btn btn-outline-primary"
+    (click)="toggleAddPersonForm()"
+  >
+    Ajouter contact
+  </button>
+
+  <div class="rest">
+    <app-person-list></app-person-list>
+
+    <app-add-person-form
+      *ngIf="showAddPersonForm"
+      [showAddPersonForm]="showAddPersonForm"
+    ></app-add-person-form>
+  </div>
+</div>

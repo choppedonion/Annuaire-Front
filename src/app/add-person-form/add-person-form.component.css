@@ -1,0 +1,27 @@
+.add-person-form {
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 400px; /* ou la largeur que vous souhaitez */
+  height: 100%;
+  background-color: white;
+  transform: translateX(100%);
+  transition: transform 3s ease; /* transition douce et appliquée uniquement sur transform */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.add-person-form.open {
+  transform: translateX(0);
+  transition: transform 3s ease;
+  background-color: rgb(170, 201, 130);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

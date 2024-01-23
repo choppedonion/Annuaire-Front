@@ -1,0 +1,223 @@
+<div [ngClass]="{ open: showAddPersonForm }" class="add-person-form">
+  <div class="container mt-4">
+    <form
+      [formGroup]="personForm"
+      (ngSubmit)="onSubmit()"
+      class="well form-horizontal"
+    >
+      <fieldset>
+        <legend>Ajouter un contact!</legend>
+
+        <!-- Text input -->
+        <div class="form-group">
+          <label class="col-md-10 control-label">Full Name</label>
+          <div class="col-md-10 inputGroupContainer">
+            <div class="input-group">
+              <span class="input-group-addon"
+                ><i class="glyphicon glyphicon-user"></i
+              ></span>
+              <input
+                formControlName="fullName"
+                placeholder="Full Name"
+                class="form-control"
+                type="text"
+              />
+            </div>
+            <div
+              *ngIf="
+                personForm.get('fullName')?.touched &&
+                personForm.get('fullName')?.hasError('required')
+              "
+              class="error"
+            >
+              Full Name is required.
+            </div>
+          </div>
+        </div>
+
+        <!-- Text input -->
+        <div class="form-group">
+          <label class="col-md-10 control-label">Email</label>
+          <div class="col-md-10 inputGroupContainer">
+            <div class="input-group">
+              <span class="input-group-addon"
+                ><i class="glyphicon glyphicon-envelope"></i
+              ></span>
+              <input
+                formControlName="email"
+                placeholder="Email Address"
+                class="form-control"
+                type="text"
+              />
+            </div>
+            <div
+              *ngIf="
+                personForm.get('email')?.touched &&
+                personForm.get('email')?.hasError('required')
+              "
+              class="error"
+            >
+              Email is required.
+            </div>
+            <div
+              *ngIf="
+                personForm.get('email')?.touched &&
+                personForm.get('email')?.hasError('email')
+              "
+              class="error"
+            >
+              Invalid email format.
+            </div>
+          </div>
+        </div>
+
+        <!-- Text input -->
+        <div class="form-group">
+          <label class="col-md-10 control-label">Phone #</label>
+          <div class="col-md-10 inputGroupContainer">
+            <div class="input-group">
+              <span class="input-group-addon"
+                ><i class="glyphicon glyphicon-earphone"></i
+              ></span>
+              <input
+                formControlName="phoneNumber"
+                placeholder="Phone Number"
+                class="form-control"
+                type="text"
+              />
+            </div>
+            <div
+              *ngIf="
+                personForm.get('phoneNumber')?.touched &&
+                personForm.get('phoneNumber')?.hasError('required')
+              "
+              class="error"
+            >
+              Phone number is required.
+            </div>
+          </div>
+        </div>
+
+        <!-- Text input -->
+        <div class="form-group">
+          <label class="col-md-10 control-label">Address</label>
+          <div class="col-md-10 inputGroupContainer">
+            <div class="input-group">
+              <span class="input-group-addon"
+                ><i class="glyphicon glyphicon-home"></i
+              ></span>
+              <input
+                formControlName="address"
+                placeholder="Address"
+                class="form-control"
+                type="text"
+              />
+            </div>
+            <div
+              *ngIf="
+                personForm.get('address')?.touched &&
+                personForm.get('address')?.hasError('required')
+              "
+              class="error"
+            >
+              Address is required.
+            </div>
+          </div>
+        </div>
+
+        <!-- Select Basic -->
+        <div class="form-group">
+          <label class="col-md-10 control-label">Gender</label>
+          <div class="col-md-10 selectContainer">
+            <div class="input-group">
+              <span class="input-group-addon"
+                ><i class="glyphicon glyphicon-list"></i
+              ></span>
+              <select
+                formControlName="gender"
+                class="form-control selectpicker"
+              >
+                <option value="">Please select the gender</option>
+                <option value="man">Man</option>
+                <option value="woman">Woman</option>
+              </select>
+            </div>
+            <div
+              *ngIf="
+                personForm.get('gender')?.touched &&
+                personForm.get('gender')?.hasError('required')
+              "
+              class="error"
+            >
+              Gender is required.
+            </div>
+            <div
+              *ngIf="
+                personForm.get('gender')?.touched &&
+                personForm.get('gender')?.hasError('invalidGender')
+              "
+              class="error"
+            >
+              Gender must be 'man' or 'woman'.
+            </div>
+          </div>
+        </div>
+
+        <!-- Text input -->
+        <div class="form-group">
+          <label class="col-md-10 control-label">Role</label>
+          <div class="col-md-10 inputGroupContainer">
+            <div class="input-group">
+              <span class="input-group-addon"
+                ><i class="glyphicon glyphicon-user"></i
+              ></span>
+              <input
+                formControlName="role"
+                placeholder="Role"
+                class="form-control"
+                type="text"
+              />
+            </div>
+            <div
+              *ngIf="
+                personForm.get('role')?.touched &&
+                personForm.get('role')?.hasError('required')
+              "
+              class="error"
+            >
+              Role is required.
+            </div>
+          </div>
+        </div>
+
+        <!-- Text input -->
+        <div class="form-group">
+          <label class="col-md-10 control-label">Description</label>
+          <div class="col-md-10 inputGroupContainer">
+            <div class="input-group">
+              <span class="input-group-addon"
+                ><i class="glyphicon glyphicon-comment"></i
+              ></span>
+              <input
+                formControlName="description"
+                placeholder="Description"
+                class="form-control"
+                type="text"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- Button -->
+        <div class="form-group">
+          <label class="col-md-10 control-label"></label>
+          <div class="col-md-10">
+            <button type="submit" class="btn btn-warning">
+              Send <span class="glyphicon glyphicon-send"></span>
+            </button>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</div>

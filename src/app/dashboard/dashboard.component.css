@@ -1,0 +1,21 @@
+@import url("https://fonts.googleapis.com/css2?family=Climate+Crisis&family=Ysabeau+Office:wght@100&display=swap");
+
+* {
+  transition: transform 0.3s ease;
+}
+
+:host {
+  display: block;
+  min-height: 100vh;
+  width: 100%;
+}
+
+.title {
+  font-family: "Climate Crisis", sans-serif;
+  font-size: 100px;
+  text-align: center;
+}
+
+.container {
+  width: 100%;
+}
