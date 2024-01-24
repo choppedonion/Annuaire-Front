@@ -5,6 +5,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { AuthGuardService } from './auth.guard';
 
 const routes: Routes = [
+  { path : '' , component : UserLoginComponent},
   { path: 'login', component: UserLoginComponent },
   {
     path: 'dashboard',

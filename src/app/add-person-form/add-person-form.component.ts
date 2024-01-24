@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Inject, Input } from '@angular/core';
 import {
   AbstractControl,
   FormBuilder,
@@ -9,6 +9,7 @@ import {
 import { PersonMockService } from '../person-mock.service';
 import { Person } from '../models/person.model'; // Import the Person interface
 import { PersonService } from '../person.service';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 function genderValidator(control: AbstractControl): ValidationErrors | null {
   const validGenders = ['man', 'woman'];
@@ -25,20 +26,23 @@ export class AddPersonFormComponent {
   @Input() showAddPersonForm: boolean = false;
 
   constructor(
+
     private fb: FormBuilder,
     // private personService: PersonMockService
-    private personService: PersonService
+    private personService: PersonService,
+    @Inject(MAT_DIALOG_DATA) public data: any 
   ) {
+    console.log(this.data.person)
     this.personForm = this.fb.group({
       // firstName: ['', Validators.required],
       // lastName: ['', Validators.required],
-      fullName: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      phoneNumber: ['', Validators.required],
-      address: ['', Validators.required],
-      gender: ['', [Validators.required, genderValidator]],
-      role: ['', Validators.required], // Added 'role' field
-      description: [''], // Added 'description' field
+      fullName: [this.data.person != undefined ?this.data.person.fullName : '', Validators.required],
+      email: [this.data.person != undefined ?this.data.person.email : '', [Validators.required, Validators.email]],
+      phoneNumber: [this.data.person != undefined ?this.data.person.phoneNumber : '', Validators.required],
+      address: [this.data.person != undefined ?this.data.person.address : '', Validators.required],
+      gender: [this.data.person != undefined ?this.data.person.gender : '', [Validators.required, genderValidator]],
+      role: [this.data.person != undefined ?this.data.person.role : '', Validators.required], // Added 'role' field
+      description: [this.data.person != undefined ?this.data.person.description : ''], // Added 'description' field
     });
   }
 
@@ -46,7 +50,10 @@ export class AddPersonFormComponent {
     if (this.personForm.valid) {
       // Extract the form data
       const newPerson: Person = this.personForm.value;
-
+      newPerson.id = this.data.person?.id;
+      this.personService.getPersons().subscribe((data)=>{
+        console.log(data)
+      })
       // Call the addPerson method from PersonService
       this.personService.addPerson(newPerson).subscribe({
         next: (person) => {

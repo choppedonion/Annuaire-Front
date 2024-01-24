@@ -12,7 +12,7 @@ export class PersonService {
 
   constructor(private http: HttpClient) {}
 
-  getPersons(): Observable<Person[]> {
+  getPersons(): Observable<any> {
     const token = localStorage.getItem('token');
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -22,7 +22,7 @@ export class PersonService {
       headers = headers.set('Authorization', `Bearer ${token}`);
     }
 
-    return this.http.get<Person[]>(this.apiUrl, { headers: headers });
+    return this.http.get<any>(this.apiUrl, { headers: headers });
   }
 
   addPerson(newPerson: Person): Observable<Person> {
@@ -34,7 +34,7 @@ export class PersonService {
     if (token) {
       headers = headers.set('Authorization', `Bearer ${token}`);
     }
-
+//console.log(headers)
     return this.http.post<Person>(this.apiUrl + '/add', newPerson, {
       headers: headers,
     });

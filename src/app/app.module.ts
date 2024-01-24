@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { PersonListComponent } from './person-list/person-list.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AddPersonFormComponent } from './add-person-form/add-person-form.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { AddPersonFormComponent } from './add-person-form/add-person-form.compon
     ReactiveFormsModule,
     HttpClientModule,
     NgbModule,
+    BrowserAnimationsModule,
   ],
   providers: [AuthGuardService],
   bootstrap: [AppComponent],
